@@ -23,9 +23,9 @@
 			<nav id="bt-menu" class="bt-menu">
 				<a href="#" class="bt-menu-trigger"><span>Menu</span></a>
 				<ul>
-					<li><a href="catalogo.html">Catálogo</a></li>
+					<li><a href="catalogo.php">Catálogo</a></li>
 					<li><a href="#">Clientes</a></li>
-					<li><a href="sabermas.html" target="_black">Saber Mas</a></li>
+					<li><a href="sabermas.php" target="_black">Saber Mas</a></li>
 					<li><a href="#">Contacto</a></li>
 				</ul>
 				<ul>
