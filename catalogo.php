@@ -44,42 +44,42 @@
             <img src="imagenes/cable punto a punto.jpg" />
             <div class="carousel-caption">
                 <h4>Cable punto a punto<h4>
-                <a href="Oferta.php">Ver oferta</a>
+                <a href="oferta.php">Ver oferta</a>
             </div>
         </div>
         <div class="item">
             <img src="imagenes/modem.jpg" />
             <div class="carousel-caption">
                 <h4>Modems<h4>
-                <a href="Oferta.php">Ver oferta</a>
+                <a href="oferta.php">Ver oferta</a>
             </div>
         </div>
         <div class="item">
             <img src="imagenes/router.jpg" />
             <div class="carousel-caption">
                 <h4>Routers<h4>
-                <a href="Oferta.php">Ver oferta</a>
+                <a href="oferta.php">Ver oferta</a>
             </div>
         </div>
         <div class="item">
             <img src="imagenes/serial.jpg" />
             <div class="carousel-caption">
                 <h4>Cable serial<h4>
-                <a href="Oferta.php">Ver oferta</a>
+                <a href="oferta.php">Ver oferta</a>
             </div>
         </div>
         <div class="item">
             <img src="imagenes/switch.jpg" />
             <div class="carousel-caption">
                 <h4>Switches<h4>
-                <a href="Oferta.php">Ver oferta</a>
+                <a href="oferta.php">Ver oferta</a>
             </div>
         </div>
         <div class="item">
             <img src="imagenes/servidor.jpg" />
             <div class="carousel-caption">
                 <h4>Servidores cisco<h4>
-                <a href="Oferta.php">Ver oferta</a>
+                <a href="oferta.php">Ver oferta</a>
             </div>
         </div>
     </div>
