@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>Catalog</title>
 	 <link rel="stylesheet" href="css/bootstrap.min.css">
          <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
         <link rel="stylesheet" href="css/main.css">
@@ -34,8 +34,69 @@
                 </div>
             </div>
 <br>
+<br>
 
-            <div class="row-fluid cajaproducto">
+<center>
+<h1>Productos actualmente en venta</h1>
+<div id="slidingcarousel" class="carousel slide">
+    <div class="carousel-inner">
+        <div class="item">
+            <img src="imagenes/cable punto a punto.jpg" />
+            <div class="carousel-caption">
+                <h4>Cable punto a punto<h4>
+                <a href="Oferta.php">Ver oferta</a>
+            </div>
+        </div>
+        <div class="item">
+            <img src="imagenes/modem.jpg" />
+            <div class="carousel-caption">
+                <h4>Modems<h4>
+                <a href="Oferta.php">Ver oferta</a>
+            </div>
+        </div>
+        <div class="item">
+            <img src="imagenes/router.jpg" />
+            <div class="carousel-caption">
+                <h4>Routers<h4>
+                <a href="Oferta.php">Ver oferta</a>
+            </div>
+        </div>
+        <div class="item">
+            <img src="imagenes/serial.jpg" />
+            <div class="carousel-caption">
+                <h4>Cable serial<h4>
+                <a href="Oferta.php">Ver oferta</a>
+            </div>
+        </div>
+        <div class="item">
+            <img src="imagenes/switch.jpg" />
+            <div class="carousel-caption">
+                <h4>Switches<h4>
+                <a href="Oferta.php">Ver oferta</a>
+            </div>
+        </div>
+        <div class="item">
+            <img src="imagenes/servidor.jpg" />
+            <div class="carousel-caption">
+                <h4>Servidores cisco<h4>
+                <a href="Oferta.php">Ver oferta</a>
+            </div>
+        </div>
+    </div>
+    <a class="carousel-control left" href="#slidingcarousel" data-slide="prev">&lsaquo;</a>
+    <a class="carousel-control right" href="#slidingcarousel" data-slide="next">&rsaquo;</a>
+</div>
+
+<script>
+
+    $(function (){
+        $('.carousel').carousel({
+            interval:1000
+        });
+    });
+    
+</script>
+<!--            <div class="row-fluid cajaproducto">
                 <div class="span4">
                     <div class="boxsombra">
                         <h3>ROUTER1</h3>
@@ -85,7 +146,7 @@
                 </div>
             </div>
 
-
+-->
 </div>
 
 
