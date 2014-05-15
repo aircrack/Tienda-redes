@@ -75,10 +75,9 @@ if(isset($_POST['nombre']) && !empty($_POST['nombre']) &&
 		}else{
 		?>
 		<div class="codrops-header" align="center">
-		<p>Registrate para poder comprar</p>
-			<a href="registro.php">Registrarse</a>
-			<br>
-			
+		<p>Registrate para poder comprar
+			<a href="registro.php">Registrarse</a>	</p>
+			<P>Si ya tienes cuenta <a href="iniciar.php">Inicia session</a></P>		
 		</div>
 		<?php
 		}
