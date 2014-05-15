@@ -1,3 +1,7 @@
+<?php
+  session_start();
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -19,6 +23,13 @@
 	<div class="span4">			</div>
 	<div class="span4">
  
+
+ <?php
+  if(isset($_SESSION['nombre'])){
+    echo "<p>Has iniciado sesion: " . $_SESSION['nombre'] . "";
+    echo "<p><a href='index.php'>Cerrar Sesion</a></p>";
+  }else {
+?>
     <form action="index.php" method="POST">
 				 <input type="text" class="form-control" placeholder="Email address" autofocus name="email" id="email"> <br> <br>
                 <input type="text" class="form-control" placeholder="nombre" name="nombre" required id="nombre"><br><br>
@@ -29,7 +40,10 @@
                
                
     </form>
- 
+ <?php
+  }
+?>
+
 	</div>
 	<div class="span4"></div>
 </div>

@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+session_destroy();
 include("conexion.php");
 
 if(isset($_POST['nombre']) && !empty($_POST['nombre']) && 
@@ -53,13 +56,34 @@ if(isset($_POST['nombre']) && !empty($_POST['nombre']) &&
 				</ul>
 			</nav>
 
+<?php
+	if(isset($_POST['nombre'])){
+		$_SESSION['nombre'] = $_POST['nombre'];
+		?>
+		<div class="codrops-header" align="center">
+		<p>Bienvenido! Has iniciado sesion: <?php echo $_POST['nombre']; ?> </p>
+			<a href="index.php">¿No eres tu? Cerrar session</a>
+			<br>			
+		</div>
+
+		<?php
+	}else{
+		if(isset($_SESSION['nombre'])){
+			echo "Has iniciado Sesion: ".$_SESSION['nombre'];
+			echo "<p><a href='index.php'>¿No eres tu? Cerrar Sesion</a></p>";
+
+		}else{
+		?>
 		<div class="codrops-header" align="center">
 		<p>Registrate para poder comprar</p>
 			<a href="registro.php">Registrarse</a>
 			<br>
 			
 		</div>
-
+		<?php
+		}
+	}
+?>
 
 
 
