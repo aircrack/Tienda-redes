@@ -1,3 +1,17 @@
+<?php
+include("conexion.php");
+
+if(isset($_POST['nombre']) && !empty($_POST['nombre']) && 
+	isset($_POST['email']) && !empty($_POST['email']) &&
+	isset($_POST['pass1']) && !empty($_POST['pass1']))
+{
+  $con = mysql_connect($host,$user,$pw) or die("Problema al conectar");
+
+  mysql_select_db($db,$con) or die("Problema al conectar la BD");
+// insercion de datos
+  mysql_query("INSERT INTO usuarios (nombre,contrasena,email) VALUES (' $_POST[nombre] ','$_POST[pass1] ','$_POST[email] ') " , $con);
+}
+?>
 <!DOCTYPE html>
 <html lang="es" class="no-js">
 	<head>
@@ -17,9 +31,12 @@
 	<body>
 		<div class="container">
 			<header class="codrops-header">
+ 
+
 				<h1>Gadgets y productos tecnológicos   </h1>
-				
+													
 			</header>
+
 			<nav id="bt-menu" class="bt-menu">
 				<a href="#" class="bt-menu-trigger"><span>Menu</span></a>
 				<ul>
@@ -36,14 +53,17 @@
 				</ul>
 			</nav>
 
-		<div>
+		<div class="codrops-header" align="center">
+		<p>Registrate para poder comprar</p>
+			<a href="registro.php">Registrarse</a>
+			<br>
 			
 		</div>
 
 
 
 
-		</div><!-- /container -->
+		</div> 
 	</body>
 	<script src="js/classie.js"></script>
 	<script src="js/borderMenu.js"></script>
