@@ -1,19 +1,5 @@
 <?php
-
 session_start();
-session_destroy();
-include("conexion.php");
-
-if(isset($_POST['nombre']) && !empty($_POST['nombre']) && 
-	isset($_POST['email']) && !empty($_POST['email']) &&
-	isset($_POST['pass1']) && !empty($_POST['pass1']))
-{
-  $con = mysql_connect($host,$user,$pw) or die("Problema al conectar");
-
-  mysql_select_db($db,$con) or die("Problema al conectar la BD");
-// insercion de datos
-  mysql_query("INSERT INTO usuarios (nombre,contrasena,email) VALUES (' $_POST[nombre] ','$_POST[pass1] ','$_POST[email] ') " , $con);
-}
 ?>
 <!DOCTYPE html>
 <html lang="es" class="no-js">
@@ -34,22 +20,20 @@ if(isset($_POST['nombre']) && !empty($_POST['nombre']) &&
 	</head>
 	<body>
 
-
 		<?php
 	if(isset($_POST['nombre'])){
-		$_SESSION['nombre'] = $_POST['nombre'];
 		?>
 		<div class="codrops-header" align="center">
-	<h3><p>Bienvenido! Has iniciado sesion como : <?php echo $_POST['nombre']; ?> &nbsp &nbsp &nbsp &nbsp <strong>¿No eres tu?  </strong><a href="index.php">Cerrar session</a> </p></h3>	
-						
+	<h3><p>Bienvenido! Has iniciado sesion como : <?php echo $_POST['nombre']; ?> &nbsp &nbsp &nbsp &nbsp <strong>¿No eres tu?  </strong><a href="cerrar.php">Cerrar session</a> </p></h3>				
 		</div>
-
 		<?php
 	}else{
 		if(isset($_SESSION['nombre'])){
-			echo "Has iniciado Sesion: ".$_SESSION['nombre'];
-			echo "<p><a href='index.php'>¿No eres tu? Cerrar Sesion</a></p>";
-
+			?>
+	<div class="codrops-header" align="center">
+	<h3><p>Bienvenido! Has iniciado sesion como : <?php echo $_SESSION['nombre']; ?> &nbsp &nbsp &nbsp &nbsp <strong>¿No eres tu?  </strong><a href="cerrar.php">Cerrar session</a> </p></h3>			
+		</div>
+			<?
 		}else{
 		?>
 	<div class="codrops-header">
