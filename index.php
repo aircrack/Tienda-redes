@@ -24,14 +24,14 @@ session_start();
 	if(isset($_POST['nombre'])){
 		?>
 		<div class="codrops-header" align="center">
-	<h3><p>Bienvenido! Has iniciado sesion como : <?php echo $_POST['nombre']; ?> &nbsp &nbsp &nbsp &nbsp <strong>¿No eres tu?  </strong><a href="cerrar.php">Cerrar session</a> </p></h3>				
+	<h3><p>Bienvenid@! Has iniciado sesion como : <strong><?php echo $_POST['nombre']; ?></strong> &nbsp &nbsp &nbsp &nbsp <strong>¿No eres tu?  </strong><a href="cerrar.php">Cerrar session</a> </p></h3>				
 		</div>
 		<?php
 	}else{
 		if(isset($_SESSION['nombre'])){
 			?>
 	<div class="codrops-header" align="center">
-	<h3><p>Bienvenido! Has iniciado sesion como : <?php echo $_SESSION['nombre']; ?> &nbsp &nbsp &nbsp &nbsp <strong>¿No eres tu?  </strong><a href="cerrar.php">Cerrar session</a> </p></h3>			
+	<h3><p>Bienvenid@! Has iniciado sesion como : <strong> <?php echo $_SESSION['nombre']; ?></strong>	 &nbsp &nbsp &nbsp &nbsp <strong>¿No eres tu?  </strong><a href="cerrar.php">Cerrar session</a> </p></h3>			
 		</div>
 			<?
 		}else{

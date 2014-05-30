@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -11,7 +14,29 @@
 </head>
 
 <body>
-
+        <?php
+    if(isset($_POST['nombre'])){
+        ?>
+        <div class="codrops-header" align="center">
+    <h3><p>Bienvenid@! Has iniciado sesion como : <strong><?php echo $_POST['nombre']; ?></strong> &nbsp &nbsp &nbsp &nbsp <strong>¿No eres tu?  </strong><a href="cerrar.php">Cerrar session</a> </p></h3>             
+        </div>
+        <?php
+    }else{
+        if(isset($_SESSION['nombre'])){
+            ?>
+    <div class="codrops-header" align="center">
+    <h3><p>Bienvenid@! Has iniciado sesion como : <strong> <?php echo $_SESSION['nombre']; ?></strong>   &nbsp &nbsp &nbsp &nbsp <strong>¿No eres tu?  </strong><a href="cerrar.php">Cerrar session</a> </p></h3>           
+        </div>
+            <?
+        }else{
+        ?>
+    <div class="codrops-header">
+        <h3><p><a href="registro.php">Registrarme</a> para poder comprar &nbsp &nbsp &nbsp &nbsp  Si ya tienes cuenta <a href="iniciar.php">Inicia session</a></P></h3>         
+        </div>
+        <?php
+        }
+    }
+?>
 
 <div class="container">
             

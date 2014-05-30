@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <!--[if lt IE 7 ]> <html class="ie ie6 no-js" lang="en"> <![endif]-->
 <!--[if IE 7 ]>    <html class="ie ie7 no-js" lang="en"> <![endif]-->
@@ -20,9 +23,33 @@
     <body>
         <div class="container">
            
+		<?php
+	if(isset($_POST['nombre'])){
+		?>
+		<div class="codrops-header" align="center">
+	<h3><p>Bienvenid@! Has iniciado sesion como : <strong><?php echo $_POST['nombre']; ?></strong> &nbsp &nbsp &nbsp &nbsp <strong>¿No eres tu?  </strong><a href="cerrar.php">Cerrar session</a> </p></h3>				
+		</div>
+		<?php
+	}else{
+		if(isset($_SESSION['nombre'])){
+			?>
+	<div class="codrops-header" align="center">
+	<h3><p>Bienvenid@! Has iniciado sesion como : <strong> <?php echo $_SESSION['nombre']; ?></strong>	 &nbsp &nbsp &nbsp &nbsp <strong>¿No eres tu?  </strong><a href="cerrar.php">Cerrar session</a> </p></h3>			
+		</div>
+			<?
+		}else{
+		?>
+	<div class="codrops-header">
+		<h3><p><a href="registro.php">Registrarme</a> para poder comprar &nbsp &nbsp &nbsp &nbsp  Si ya tienes cuenta <a href="iniciar.php">Inicia session</a></P></h3>			
+		</div>
+		<?php
+		}
+	}
+?>
+
 			<header>
 				<h1>Preguntas <span>Frecuentes</span></h1>
-				<h1> ¿No sabes como comprar? <strong>Aqui te enseñamos</strong></h1>
+				<h1>  ¿No sabes como comprar? <strong>Aqui te enseñamos</strong></h1>
 			</header>
 			<section class="se-container">
 				<div class="se-slope">

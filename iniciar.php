@@ -21,7 +21,7 @@
 	<div class="span4">			</div>
 	<div class="span4">
 		
-    <form action="index.php" method="POST">
+    <form action="iniciarl.php" method="POST">
                 <input type="text" class="form-control" placeholder="nombre" name="nombre" required><br><br>
                 <input type="password" class="form-control" placeholder="Password">                    
                 <button class="btn btn-lg btn-primary btn-block" type="submit" >Iniciar</button>
