@@ -15,15 +15,16 @@
 <script src="js/vendor/jquery1-9.1.min.js"></script>
 <body>
 <br>
+
   <div class="container">
+  <h2 class="text-info">Por favor ingresa tu nombre de usuario y tu contraseña </h2>
   <div class="row">
 	<div class="span4">			</div>
 	<div class="span4">
 		
     <form action="index.php" method="POST">
                 <input type="text" class="form-control" placeholder="nombre" name="nombre" required><br><br>
-                <input type="password" class="form-control" placeholder="Password">
-                <input type="password" class="form-control" placeholder="Repeat Password ">                      
+                <input type="password" class="form-control" placeholder="Password">                    
                 <button class="btn btn-lg btn-primary btn-block" type="submit" >Iniciar</button>
     </form>
 

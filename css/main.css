@@ -11,7 +11,7 @@ background: #59ACAC;
 .cajaproducto {margin: 0 0 50px 0}
 .cajaproducto h3{text-align: center;}
 
-
+#principal {background: url(../imagenes/glass.jpg) repeat rgb(223, 223, 243); padding: 120px 0; color: #0080C0;margin-bottom:50px;border-bottom: 0px solid #ccc; position: relative;left: 80px; width: 1200px;}
 #pie {background-color: #444; color: #f1f1f1; margin-top: 50px; border-top: 1px solid #e7e7e7; font-size: 13px;}
 #pie h5 {border-bottom: 1px dashed #777; padding-bottom: 3px}
 #subpie {border-top: 1px solid #ccc; margin-top: 5px; padding-top: 5px; font-size: 13px;}

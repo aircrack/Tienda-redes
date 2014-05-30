@@ -29,16 +29,43 @@ if(isset($_POST['nombre']) && !empty($_POST['nombre']) &&
 		<link rel="stylesheet" type="text/css" href="css/demo.css" />
 		<link rel="stylesheet" type="text/css" href="css/icons.css" />
 		<link rel="stylesheet" type="text/css" href="css/style5.css" />
+		<link rel="stylesheet" type="text/css" href="css/main.css" />		
 		<script src="js/modernizr.custom.js"></script>
 	</head>
 	<body>
-		<div class="container">
-			<header class="codrops-header">
- 
 
-				<h1>Gadgets y productos tecnológicos   </h1>
-													
-			</header>
+
+		<?php
+	if(isset($_POST['nombre'])){
+		$_SESSION['nombre'] = $_POST['nombre'];
+		?>
+		<div class="codrops-header" align="center">
+	<h3><p>Bienvenido! Has iniciado sesion como : <?php echo $_POST['nombre']; ?> &nbsp &nbsp &nbsp &nbsp <strong>¿No eres tu?  </strong><a href="index.php">Cerrar session</a> </p></h3>	
+						
+		</div>
+
+		<?php
+	}else{
+		if(isset($_SESSION['nombre'])){
+			echo "Has iniciado Sesion: ".$_SESSION['nombre'];
+			echo "<p><a href='index.php'>¿No eres tu? Cerrar Sesion</a></p>";
+
+		}else{
+		?>
+	<div class="codrops-header">
+		<h3><p><a href="registro.php">Registrarme</a> para poder comprar &nbsp &nbsp &nbsp &nbsp  Si ya tienes cuenta <a href="iniciar.php">Inicia session</a></P></h3>			
+		</div>
+		<?php
+		}
+	}
+?>
+
+
+	 <div id="principal">
+		<div class="container">
+		<h1>Gadgets y productos tecnológicos</h1>								
+			
+			
 
 			<nav id="bt-menu" class="bt-menu">
 				<a href="#" class="bt-menu-trigger"><span>Menu</span></a>
@@ -56,37 +83,11 @@ if(isset($_POST['nombre']) && !empty($_POST['nombre']) &&
 				</ul>
 			</nav>
 
-<?php
-	if(isset($_POST['nombre'])){
-		$_SESSION['nombre'] = $_POST['nombre'];
-		?>
-		<div class="codrops-header" align="center">
-		<p>Bienvenido! Has iniciado sesion: <?php echo $_POST['nombre']; ?> </p>
-			<a href="index.php">¿No eres tu? Cerrar session</a>
-			<br>			
-		</div>
-
-		<?php
-	}else{
-		if(isset($_SESSION['nombre'])){
-			echo "Has iniciado Sesion: ".$_SESSION['nombre'];
-			echo "<p><a href='index.php'>¿No eres tu? Cerrar Sesion</a></p>";
-
-		}else{
-		?>
-		<div class="codrops-header" align="center">
-		<p>Registrate para poder comprar
-			<a href="registro.php">Registrarse</a>	</p>
-			<P>Si ya tienes cuenta <a href="iniciar.php">Inicia session</a></P>		
-		</div>
-		<?php
-		}
-	}
-?>
 
 
 
-		</div> 
+
+		</div> </div> 
 	</body>
 	<script src="js/classie.js"></script>
 	<script src="js/borderMenu.js"></script>
