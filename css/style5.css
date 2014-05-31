@@ -9,6 +9,7 @@
 body  {
 	background: #1abc9c;
 }
+#principal {background: url(../imagenes/glass.jpg); padding: 120px 0; color: #0080C0;margin-bottom:50px;border-bottom: 0px solid #ccc; position: relative;left: 80px; width: 1200px;}
 
 .container {
 	padding: 80px;

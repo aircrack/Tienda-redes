@@ -14,9 +14,9 @@ session_start();
 		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
 		<link rel="stylesheet" type="text/css" href="css/demo.css" />
 		<link rel="stylesheet" type="text/css" href="css/icons.css" />
-		<link rel="stylesheet" type="text/css" href="css/style5.css" />
-		<link rel="stylesheet" type="text/css" href="css/main.css" />		
+		<link rel="stylesheet" type="text/css" href="css/style5.css" />		 	
 		<script src="js/modernizr.custom.js"></script>
+		 
 	</head>
 	<body>
 

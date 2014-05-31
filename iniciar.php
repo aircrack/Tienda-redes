@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
@@ -12,6 +12,10 @@
 <script src="js/vendor/bootstrap.js"></script>
 <script src="js/vendor/bootstrap.min.js"></script>
 <script src="js/vendor/jquery1-9.1.min.js"></script>
+<style>
+        body  {
+  background: #1abc9c;
+}</style>
 <body>
 <br>
 
@@ -23,7 +27,7 @@
 		
     <form action="iniciarl.php" method="POST">
                 <input type="text" class="form-control" placeholder="nombre" name="nombre" required><br><br>
-                <input type="password" class="form-control" placeholder="Password">                    
+                <input type="password" class="form-control" placeholder="password" name="password">                    
                 <button class="btn btn-lg btn-primary btn-block" type="submit" >Iniciar</button>
     </form>
 
