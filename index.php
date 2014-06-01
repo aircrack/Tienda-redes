@@ -33,7 +33,7 @@ session_start();
 			<div class="modal-body" align="center">
 				 <form action="iniciarl.php" method="POST">
                	 <input type="text" class="form-control" placeholder="nombre" name="nombre" required><br><br>
-               		 <input type="password" class="form-control" placeholder="password" name="password">  
+               		 <input type="password" class="form-control" placeholder="password" name="password" required>  
 	               	<div class="modal-footer">
 					<a href="#" class="btn" data-dismiss="modal">Cerrar</a>
 					<button id="yesbutton" type="submit" class="btn btn-primary" >Iniciar Session</button>
@@ -49,18 +49,21 @@ session_start();
 			</div>
 			<div class="modal-body" align="center">				
     			<form action="nuevouser.php" method="POST" >
-			<input type="text" class="form-control" placeholder="Email address" autofocus name="email" id="email"> <br> 
-                <input type="text" class="form-control" placeholder="nombre" name="nombre" required id="nombre"><br> 
-                <input type="password" class="form-control" placeholder="Password" name="pass1" id="pass1"><br> 
-                <input type="password" class="form-control" placeholder="Repeat Password " name="pass2" id="pass2"> <br>                                    
+			<input type="email" class="form-control" placeholder="Email address" autofocus name="email" id="email" required> <br> 
+                <input type="text" class="form-control" placeholder="nombre" name="nombre" required id="nombre" title="Ingresa un nombre de usuario" required><br> 
+                <input type="password" class="form-control" placeholder="Password" name="pass1" id="pass1" title="Contraseña requerida" required><br> 
+                <input type="password" class="form-control" placeholder="Repeat Password " name="pass2" id="pass1_repeat" title="Ingresa la misma contraseña" required oninput="check(this)"> <br>                                    
                  	<div class="modal-footer">
 						<a href="#" class="btn" data-dismiss="modal">Cerrar</a>
-						<button class="btn btn-lg btn-primary" type="submit">Registrarse</button>  
+						<button class="btn btn-lg btn-primary" type="submit" >Registrarse</button>  
 					</div>
    				 </form>
 			</div>
 		</div>
 
+<script>
+function check(input) {if (input.value != document.getElementById('pass1').value) {input.setCustomValidity('Los campos no coinciden');} else{ input.setCustomValidity(''); }} 
+</script>
 
 		<?php
 	if(isset($_POST['nombre'])){
