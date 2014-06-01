@@ -73,7 +73,13 @@ session_start();
 		if(isset($_SESSION['nombre'])){
 			?>
 	<div class="codrops-header" align="center">
-	<h4><p>Bienvenid@! Has iniciado sesion como : <strong> <?php echo $_SESSION['nombre']; ?></strong>	 &nbsp &nbsp &nbsp &nbsp <strong>¿No eres tu?  </strong><a href="cerrar.php">Cerrar session</a> </p></h4>			
+	<h4><p>Bienvenid@! Has iniciado sesion como : <strong> <?php 
+	if ($_SESSION['nombre']== "administrador" ) {
+		?> <a href="admin/index.php"><?php echo $_SESSION['nombre']; ?></a> <?php
+	}
+	else {  echo $_SESSION['nombre']; }
+	?>
+	</strong>	 &nbsp &nbsp &nbsp &nbsp <strong>¿No eres tu?  </strong><a href="cerrar.php">Cerrar session</a> </p></h4>			
 		</div>
 			<?
 		}else{
@@ -97,7 +103,7 @@ session_start();
 					<li><a href="catalogo.php">Catálogo</a></li>
 					<li><a href="#">Clientes</a></li>
 					<li><a href="sabermas.php" target="_black">Saber Mas</a></li>
-					<li><a href="#">Contacto</a></li>
+					<li><a href="http://about.me/luisalfredomoctezuma">Contacto</a></li>
 				</ul>
 				<ul>
 					<li><a href="https://twitter.com/LuisAlfredoMoc" class="bt-icon icon-twitter" target="_black">Twitter</a></li>
