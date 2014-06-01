@@ -48,7 +48,7 @@ include("../conexion.php");
     }else{
     ?>
   <div class="codrops-header">
-    <h4><p><a href="registro.php">Registrarme</a> para poder comprar &nbsp &nbsp &nbsp &nbsp  Si ya tienes cuenta <a href="../iniciar.php">Inicia session</a></P></h4>     
+    <h4><p><a href="../index.php#registraruser">Registrarme</a> para poder comprar &nbsp &nbsp &nbsp &nbsp  Si ya tienes cuenta <a href="../index.php#iniciosession">Inicia session</a></P></h4>     
     </div>
     <?php
     }
