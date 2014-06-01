@@ -122,6 +122,31 @@ session_start();
 </div>
 		</div>
 			</div>
+
+<div id="pie">
+	<div class="container">	
+	<div class="row-fluid">
+		 <div class="span12">			
+			<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licencia Creative Commons" style="border-width:0" src="http://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Gadgets-Redes</span> por <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/luisalfredomoctezuma/Tienda-redes/graphs/contributors" property="cc:attributionName" rel="cc:attributionURL">Luis Alfredo-Gerson-Luis Antonio-Joaquin</a> se distribuye bajo una <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Licencia Creative Commons Atribución 4.0 Internacional</a>.    
+			        <p>&copy; 2013 LAMoctezuma, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>			  			
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="span6">	
+		<h5><a href="">Blog</a></h5>
+		<h5><a href="">Documentacion</a></h5>
+		<h5><a href="">Terminos y condiciones</a></h5>
+		</div>
+		<div class="span6">	
+		<h5>Puedes descargar y contribuir con el proyecto<a href="https://github.com/luisalfredomoctezuma/Tienda-redes">Github</a> </h5>
+		<h5>Mira el proyecto en produccion en <a href="http://tienda-redes.herokuapp.com/">Heroku</a></h5>
+		</div>
+	</div>
+	</div>
+</div>
+
+
+
 	</body>
 	<script src="js/classie.js"></script>
 	<script src="js/borderMenu.js"></script>
