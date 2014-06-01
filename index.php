@@ -87,8 +87,10 @@ session_start();
 	}
 ?>
 	 <div id="principal">
+
 		<div class="container">
-		<h1>Gadgets y productos tecnológicos</h1>								
+					<div class="row">	<div class="span7"><h2>Gadgets y productos tecnológicos</h2></div>			 
+					</div>				
 			<nav id="bt-menu" class="bt-menu">
 				<a href="#" class="bt-menu-trigger"><span>Menu</span></a>
 				<ul>

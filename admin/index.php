@@ -62,7 +62,12 @@ include("../conexion.php");
 
 <div class="container">
 <div class="row">
-  <div class="span1"></div>
+  <div class="span1">
+    <h5>Usuario <strong><?php echo $_SESSION['nombre']; ?></strong></h5> <br>
+    <img src="../imagenes/admin1.jpg" alt=""> 
+    <a href="#">Perfil</a>
+    <a href="">Permisos</a>
+  </div>
   <div class="span10">
   <h3 class='text-info' align="center">Lista de usuarios registrados</h3>
      <?php
