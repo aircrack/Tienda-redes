@@ -23,6 +23,7 @@ include("../conexion.php");
     <a class="brand" >Administracion</a>
     <ul class="nav">
     <li  class="active"><a href="../index.php">Inicio</a></li>
+      <li><a href="#" id="registrados">Usuarios Registrados</a></li>
       <li><a href="#" >Productos mas vendidos</a></li>
       <li><a href="#">Productos menos vendidos</a></li>
       <li>
@@ -57,31 +58,31 @@ include("../conexion.php");
 
 <div class="container">
 <div class="row">
-  <div class="span1"> </div>
+  <div class="span1"></div>
   <div class="span10">
-    <table class="table table-striped table-bordered table-hover table-condensed">
-<caption ><h1>Productos mas vendidos en esta semana</h1></caption>
-<thead>
-<th class="text-warning"><h3>Nombre</h3></th>
-<th class="text-warning"><h3>Cantidad</h3></th>
-<th class="text-warning"><h3>otro</h3></th>
-</thead>
+  <h3 class='text-info' align="center">Lista de usuarios registrados</h3>
+     <?php
 
+     $con = mysql_connect($host,$user,$pw) or die("Problema al conectar");
+     mysql_select_db($db,$con) or die("Problema al conectar la BD");
+    $result_set= mysql_query("Select * from usuarios",$con);
 
-<tr class="error">
-<td><a href="#">Google Glass</a></td>
-<td class="text-success" > 3 </td>
-<td  >otro</td>
-</tr>
-
-
-<tr>
-<td><a href="#">Router cisco</a></td>
-<td  class="text-info"> 20 </td>
-<td >otro</td>
-</tr>
- 
-</table>
+    print "<table class='table table-striped table-bordered table-hover table-condensed'>";
+    //Imprime las cabeceras
+    for ($c=0; $c<mysql_num_fields($result_set); $c++) {
+         print "<th class='text-warning'> <h4>". mysql_field_name($result_set, $c)." </h4></th>";
+       }   
+     
+    //Imprime todas las filas
+    while ($record=mysql_fetch_row($result_set)) {
+      print "<tr class='error'>";
+      for ($c=0; $c<mysql_num_fields($result_set); $c++) {
+         print "<td class='text-info'> <h4>". $record[$c]  ."</h4></td>" ;
+     }
+      print "</tr>";
+     }
+     print "</table>";
+    ?>
 
   </div>
     <div class="span1"> </div>

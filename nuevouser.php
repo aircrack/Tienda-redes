@@ -17,7 +17,5 @@ if(isset($_POST['nombre']) && !empty($_POST['nombre']) &&
 $_SESSION['nombre'] = $_POST['nombre'];
 //Redireccionar a la pagina de login
 	header ("Location: index.php");	 
-
-
 ?>
 
