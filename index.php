@@ -25,12 +25,12 @@ session_start();
 	</head>
 	<body>
 		
-		<div id="themodal" class="modal hide fade">
+		<div id="iniciosession" class="modal hide fade">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
 				<h3 class="text-info">Ingresa tus datos</h3>
 			</div>
-			<div class="modal-body">
+			<div class="modal-body" align="center">
 				 <form action="iniciarl.php" method="POST">
                	 <input type="text" class="form-control" placeholder="nombre" name="nombre" required><br><br>
                		 <input type="password" class="form-control" placeholder="password" name="password">  
@@ -39,6 +39,25 @@ session_start();
 					<button id="yesbutton" type="submit" class="btn btn-primary" >Iniciar Session</button>
 					</div>
     			</form>	
+			</div>
+		</div>
+
+		<div id="registraruser" class="modal hide fade">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+				<h3 class="text-info">Ingresa tus datos</h3>
+			</div>
+			<div class="modal-body" align="center">				
+    			<form action="nuevouser.php" method="POST" >
+			<input type="text" class="form-control" placeholder="Email address" autofocus name="email" id="email"> <br> 
+                <input type="text" class="form-control" placeholder="nombre" name="nombre" required id="nombre"><br> 
+                <input type="password" class="form-control" placeholder="Password" name="pass1" id="pass1"><br> 
+                <input type="password" class="form-control" placeholder="Repeat Password " name="pass2" id="pass2"> <br>                                    
+                 	<div class="modal-footer">
+						<a href="#" class="btn" data-dismiss="modal">Cerrar</a>
+						<button class="btn btn-lg btn-primary" type="submit">Registrarse</button>  
+					</div>
+   				 </form>
 			</div>
 		</div>
 
@@ -60,7 +79,7 @@ session_start();
 		}else{
 		?>
 	<div class="codrops-header">
-		<h4><p><a href="registro.php">Registrarme</a> para poder comprar &nbsp &nbsp &nbsp &nbsp  Si ya tienes cuenta  <a href="#themodal" role="button" class="btn btn-primary" data-toggle="modal">Iniciar Session</a></P></h4>	
+		<h4><p><a href="#registraruser" role="button" data-toggle="modal">Registrarme</a>  para poder comprar &nbsp &nbsp &nbsp &nbsp  Si ya tienes cuenta  <a href="#iniciosession" role="button" class="btn btn-primary" data-toggle="modal">Iniciar Session</a></P></h4>	
 
 		</div>
 		<?php
