@@ -10,7 +10,7 @@ session_start();
 		<title>MarketPlace| Network</title>
 		<meta name="description" content="Responsive Animated Border Menus with CSS Transitions" />
 		<meta name="keywords" content="navigation, menu, responsive, border, overlay, css transition" />
-		<link rel="shortcut icon" href="../favicon.ico">
+		 
 		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
 		<link rel="stylesheet" type="text/css" href="css/demo.css" />
 		<link rel="stylesheet" type="text/css" href="css/icons.css" />
@@ -24,9 +24,23 @@ session_start();
 
 	</head>
 	<body>
-
 		
-
+		<div id="themodal" class="modal hide fade">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+				<h3 class="text-info">Ingresa tus datos</h3>
+			</div>
+			<div class="modal-body">
+				 <form action="iniciarl.php" method="POST">
+               	 <input type="text" class="form-control" placeholder="nombre" name="nombre" required><br><br>
+               		 <input type="password" class="form-control" placeholder="password" name="password">  
+	               	<div class="modal-footer">
+					<a href="#" class="btn" data-dismiss="modal">Cerrar</a>
+					<button id="yesbutton" type="submit" class="btn btn-primary" >Iniciar Session</button>
+					</div>
+    			</form>	
+			</div>
+		</div>
 
 
 		<?php
@@ -46,7 +60,7 @@ session_start();
 		}else{
 		?>
 	<div class="codrops-header">
-		<h4><p><a href="registro.php">Registrarme</a> para poder comprar &nbsp &nbsp &nbsp &nbsp  Si ya tienes cuenta <a href="iniciar.php">Inicia session</a></P></h4>	
+		<h4><p><a href="registro.php">Registrarme</a> para poder comprar &nbsp &nbsp &nbsp &nbsp  Si ya tienes cuenta  <a href="#themodal" role="button" class="btn btn-primary" data-toggle="modal">Iniciar Session</a></P></h4>	
 
 		</div>
 		<?php
