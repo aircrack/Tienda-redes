@@ -42,16 +42,16 @@ session_start();
             
              <div class="row-fluid texto-destacado text-center">
                 <div class="boxsombra boxdestacada">
-                    <h2>Productos en oferta y promociones</h2>
+                    <h2>Productos que tenemos en venta actualmente</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, ipsam, voluptatem impedit explicabo dicta illo ipsa vitae odio harum eum tempore doloremque omnis doloribus repudiandae suscipit saepe unde expedita praesentium.</p>
-                    <a class="btn btn-warning btn-large" href="#">Ver</a>
+                   <!-- <a class="btn btn-warning btn-large" href="#">Ver</a>-->
                 </div>
             </div>
 <br>
 <br>
 
 <center>
-<h1>Productos actualmente en venta</h1>
+<h1>Productos en oferta y otras promociones.</h1>
 <div id="slidingcarousel" class="carousel slide">
     <div class="carousel-inner">
         <div class="item">
@@ -110,11 +110,11 @@ session_start();
     });
     
 </script>
-<!--            <div class="row-fluid cajaproducto">
+           <div class="row-fluid cajaproducto">
                 <div class="span4">
                     <div class="boxsombra">
                         <h3>ROUTER1</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam, enim aspernatur tempore voluptatem natus neque quasi molestiae. Porro, cupiditate, fuga odit esse deleniti ullam tenetur necessitatibus ut ratione laborum accusamus!
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam, enim aspernatur tempore voluptatem natus neque quasi molestiae. Porro, cupiditate, fuga odit esse deleniti ullam tenetur necessitatibus ut ratione laborum
                          <a class="btn btn-warning btn-large" href="#">Comprar Ahora</a>
                         </p>
                     </div>
@@ -160,7 +160,7 @@ session_start();
                 </div>
             </div>
 
--->
+
 </div>
 
 
