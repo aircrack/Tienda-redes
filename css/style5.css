@@ -9,7 +9,8 @@
 body  {
 	background: #1abc9c;
 }
-
+#principal {background: url(../imagenes/glass.jpg); padding: 120px 0; color: #0080C0;margin-bottom:50px;border-bottom: 0px solid #ccc; position: relative;left: 80px; width: 1200px;}
+#pie {background-color: #000000; color: #FFFFFF; margin-top: 50px; border-top: 1px solid #800000; font-size: 13px;}
 .container {
 	padding: 80px;
 }

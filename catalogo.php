@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -11,22 +14,44 @@
 </head>
 
 <body>
-
+        <?php
+    if(isset($_POST['nombre'])){
+        ?>
+        <div class="codrops-header" align="center">
+    <h3><p>Bienvenid@! Has iniciado sesion como : <strong><?php echo $_POST['nombre']; ?></strong> &nbsp &nbsp &nbsp &nbsp <strong>¿No eres tu?  </strong><a href="cerrar.php">Cerrar session</a> </p></h3>             
+        </div>
+        <?php
+    }else{
+        if(isset($_SESSION['nombre'])){
+            ?>
+    <div class="codrops-header" align="center">
+    <h3><p>Bienvenid@! Has iniciado sesion como : <strong> <?php echo $_SESSION['nombre']; ?></strong>   &nbsp &nbsp &nbsp &nbsp <strong>¿No eres tu?  </strong><a href="cerrar.php">Cerrar session</a> </p></h3>           
+        </div>
+            <?
+        }else{
+        ?>
+    <div class="codrops-header">
+        <h3><p><a href="index.php#registraruser">Registrarme</a> para poder comprar &nbsp &nbsp &nbsp &nbsp  Si ya tienes cuenta <a href="index.php#iniciosession">Inicia session</a></P></h3>         
+        </div>
+        <?php
+        }
+    }
+?>
 
 <div class="container">
             
              <div class="row-fluid texto-destacado text-center">
                 <div class="boxsombra boxdestacada">
-                    <h2>Productos en oferta y promociones</h2>
+                    <h2>Productos que tenemos en venta actualmente</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, ipsam, voluptatem impedit explicabo dicta illo ipsa vitae odio harum eum tempore doloremque omnis doloribus repudiandae suscipit saepe unde expedita praesentium.</p>
-                    <a class="btn btn-warning btn-large" href="#">Ver</a>
+                   <!-- <a class="btn btn-warning btn-large" href="#">Ver</a>-->
                 </div>
             </div>
 <br>
 <br>
 
 <center>
-<h1>Productos actualmente en venta</h1>
+<h1>Productos en oferta y otras promociones.</h1>
 <div id="slidingcarousel" class="carousel slide">
     <div class="carousel-inner">
         <div class="item">
@@ -85,11 +110,11 @@
     });
     
 </script>
-<!--            <div class="row-fluid cajaproducto">
+           <div class="row-fluid cajaproducto">
                 <div class="span4">
                     <div class="boxsombra">
                         <h3>ROUTER1</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam, enim aspernatur tempore voluptatem natus neque quasi molestiae. Porro, cupiditate, fuga odit esse deleniti ullam tenetur necessitatibus ut ratione laborum accusamus!
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam, enim aspernatur tempore voluptatem natus neque quasi molestiae. Porro, cupiditate, fuga odit esse deleniti ullam tenetur necessitatibus ut ratione laborum
                          <a class="btn btn-warning btn-large" href="#">Comprar Ahora</a>
                         </p>
                     </div>
@@ -135,7 +160,7 @@
                 </div>
             </div>
 
--->
+
 </div>
 
 
