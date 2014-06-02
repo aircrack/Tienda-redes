@@ -1,6 +1,6 @@
 <?php
 $host ="localhost";
 $user="root";
-$pw="Padilla.1" ;
+$pw="123456" ;
 $db ="tienda_redes";
 ?>
