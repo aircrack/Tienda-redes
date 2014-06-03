@@ -1,6 +1,7 @@
 <?php
 session_start();
 include("../conexion.php");
+
 ?>
 <!doctype html>
 <html lang="es">
@@ -65,7 +66,7 @@ include("../conexion.php");
   <div class="span1">
     <h5>Usuario <strong><?php echo $_SESSION['nombre']; ?></strong></h5> <br>
     <img src="../imagenes/admin1.jpg" alt=""> 
-    <a href="profile.php">Perfil</a>
+    <a href="profile.php"><h4>Perfil</h4></a>
         </div>
   <div class="span10">
   <h3 class='text-info' align="center" id="registrados">Lista de usuarios registrados</h3>
@@ -80,22 +81,44 @@ include("../conexion.php");
     for ($c=0; $c<mysql_num_fields($result_set); $c++) {
          print "<th class='text-warning'> <h4>". mysql_field_name($result_set, $c)." </h4></th>";
        }   
+        print "<th class='text-warning'> <h4>Permisos</h4></th>";
      
     //Imprime todas las filas
     while ($record=mysql_fetch_row($result_set)) {
       print "<tr class='error'>";
       for ($c=0; $c<mysql_num_fields($result_set); $c++) {
-         print "<td class='text-info'> <h4>". $record[$c]  ."</h4></td>" ;
+         print "<td class='text-info'> <h4>". $record[$c]."</h4></td>" ;         
      }
+     print "<td> <button type='button' class='btn btn-inverse btn-mini' href='#elimina' data-toggle='modal'>Eliminar</button></td>";
       print "</tr>";
      }
      print "</table>";
+
     ?>
 
   </div>
     <div class="span1"> </div>
 </div>  
 </div>
+
+
+<!-- -->
+<div id="elimina" class="modal hide fade">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+        <h3 class="text-info">confirma para eliminar</h3>
+      </div>
+      <div class="modal-body" align="center">       
+          <form action="elimina.php" method="POST" >
+          <p><h3>Se eliminara el usuario <?php echo $record[$c]; ?></h3></p>
+           <div class="modal-footer">
+            <a href="#" class="btn" data-dismiss="modal">Candelar</a>
+            <button class="btn btn-lg btn-primary" type="submit" >Confirmar</button>  
+          </div>
+           </form>
+      </div>
+    </div>
+<!-- -->
 
 
 <div class="container">

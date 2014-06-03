@@ -16,7 +16,7 @@ else
   mysql_select_db($db,$con) or die("Problema al conectar la BD");
 // consulta
  $nom=$_POST["nombre"];
- $userr = mysql_query("SELECT nombre,contrasena FROM usuarios where nombre='$nom'", $con);
+ $userr = mysql_query("SELECT * FROM usuarios WHERE nombre='$nom'", $con);
  while($resul=mysql_fetch_array($userr)){
 			$var=$resul[0];
 			$var1=$resul[1];

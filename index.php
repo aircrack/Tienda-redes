@@ -21,6 +21,7 @@ session_start();
  
   <script src="js/jquery-1.8.3.min.js"></script>
   <script src="js/bootstrap.js"></script>
+<script> function conMin(field) { field.value = field.value.toLowerCase()}</script>
 
 	</head>
 	<body>
@@ -32,7 +33,7 @@ session_start();
 			</div>
 			<div class="modal-body" align="center">
 				 <form action="iniciarl.php" method="POST">
-               	 <input type="text" class="form-control" placeholder="nombre" name="nombre" required><br><br>
+               	 <input type="text" class="form-control" placeholder="nombre" name="nombre" onChange="conMin(this)" required><br><br>
                		 <input type="password" class="form-control" placeholder="password" name="password" required>  
 	               	<div class="modal-footer">
 					<a href="#" class="btn" data-dismiss="modal">Cerrar</a>
@@ -50,7 +51,7 @@ session_start();
 			<div class="modal-body" align="center">				
     			<form action="nuevouser.php" method="POST" >
 			<input type="email" class="form-control" placeholder="Email address" autofocus name="email" id="email" required> <br> 
-                <input type="text" class="form-control" placeholder="nombre" name="nombre" required id="nombre" title="Ingresa un nombre de usuario" required><br> 
+                <input type="text" class="form-control" placeholder="nombre" name="nombre" onChange="conMin(this)" required id="nombre" title="Ingresa un nombre de usuario" required><br> 
                 <input type="password" class="form-control" placeholder="Password" name="pass1" id="pass1" title="Contraseña requerida" required><br> 
                 <input type="password" class="form-control" placeholder="Repeat Password " name="pass2" id="pass1_repeat" title="Ingresa la misma contraseña" required oninput="check(this)"> <br>                                    
                  	<div class="modal-footer">
@@ -64,10 +65,10 @@ session_start();
 <script>
 function check(input) {if (input.value != document.getElementById('pass1').value) {input.setCustomValidity('Los campos no coinciden');} else{ input.setCustomValidity(''); }} 
 </script>
-
 		<?php
 	if(isset($_POST['nombre'])){
 		?>
+
 		<div class="codrops-header" align="center">
 	<h4><p>Bienvenid@! Has iniciado sesion como : <strong><?php echo $_POST['nombre']; ?></strong> &nbsp &nbsp &nbsp &nbsp <strong>¿No eres tu?  </strong><a href="cerrar.php">Cerrar session</a> </p></h4>				
 		</div>
