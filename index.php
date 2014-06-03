@@ -105,14 +105,9 @@ function check(input) {if (input.value != document.getElementById('pass1').value
 				<ul>
 					<li><a href="catalogo.php">Catálogo</a></li>
 					<li><a href="#">Clientes</a></li>
-<<<<<<< HEAD
 					<li><a href="sabermas.php">Saber Mas</a></li>
-=======
-					<li><a href="sabermas.php" target="_black">Saber Mas</a></li>
-<<<<<<< HEAD
->>>>>>> ef192c8ac68a40315b7e1d4c2c83c5fa95be2d28
-=======
->>>>>>> origin
+
+
 					<li><a href="http://about.me/luisalfredomoctezuma">Contacto</a></li>
 				</ul>
 				<ul>
