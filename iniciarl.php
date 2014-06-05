@@ -16,17 +16,26 @@ else
   mysql_select_db($db,$con) or die("Problema al conectar la BD");
 // consulta
  $nom=$_POST["nombre"];
- $userr = mysql_query("SELECT * FROM usuarios WHERE nombre='$nom'", $con);
+ $userr = mysql_query("SELECT nombre,contrasena FROM usuarios WHERE nombre='$nom'", $con);
  while($resul=mysql_fetch_array($userr)){
+<<<<<<< HEAD
 			$var=$resul[1];
 			$var1=$resul[2];
 									}
   if ($_SESSION['nombre']==$var && $_SESSION['password']==$var1 ) {
   	header ("Location: index.php");	 
+=======
+			$var=$resul[0];
+			$var1=$resul[1];
+        if ($_SESSION['nombre']==$var & $_SESSION['password']==$var1 ) {
+    header ("Location: index.php");  
+>>>>>>> e63a56e4cb5cd2ffa21470fa9faad08ac8f4ea99
   }else{
-  	session_destroy();
-  		echo "<script language='javascript'> alert('No estas registrado');  document.location=('index.php');</script>";  			
+    session_destroy();
+      echo "<script language='javascript'> alert('No estas registrado o los datos no coinciden');  document.location=('index.php');</script>";       
   }
+	}
+
 } 
 
 

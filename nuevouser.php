@@ -11,7 +11,7 @@ if(isset($_POST['nombre']) && !empty($_POST['nombre']) &&
 
   mysql_select_db($db,$con) or die("Problema al conectar la BD");
 // insercion de datos
-  mysql_query("INSERT INTO usuarios (nombre,contrasena,email) VALUES (' $_POST[nombre] ','$_POST[pass1] ','$_POST[email] ') " , $con);
+  mysql_query("INSERT INTO usuarios (nombre,contrasena,email) VALUES ('$_POST[nombre]','$_POST[pass1]','$_POST[email]') " , $con);
 } 
 
 $_SESSION['nombre'] = $_POST['nombre'];
