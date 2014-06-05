@@ -18,8 +18,8 @@ else
  $nom=$_POST["nombre"];
  $userr = mysql_query("SELECT * FROM usuarios WHERE nombre='$nom'", $con);
  while($resul=mysql_fetch_array($userr)){
-			$var=$resul[0];
-			$var1=$resul[1];
+			$var=$resul[1];
+			$var1=$resul[2];
 									}
   if ($_SESSION['nombre']==$var && $_SESSION['password']==$var1 ) {
   	header ("Location: index.php");	 
