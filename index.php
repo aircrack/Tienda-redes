@@ -33,7 +33,7 @@ session_start();
 			</div>
 			<div class="modal-body" align="center">
 				 <form action="iniciarl.php" method="POST">
-               	 <input type="text" class="form-control" placeholder="nombre" name="nombre" onChange="conMin(this)" required><br><br>
+               	 <input type="text" class="form-control" placeholder="nombre" name="nombre" autofocus onChange="conMin(this)" required><br><br>
                		 <input type="password" class="form-control" placeholder="password" name="password" required>  
 	               	<div class="modal-footer">
 					<a href="#" class="btn" data-dismiss="modal">Cerrar</a>
@@ -51,7 +51,7 @@ session_start();
 			<div class="modal-body" align="center">				
     			<form action="nuevouser.php" method="POST" >
 			<input type="email" class="form-control" placeholder="Email address" autofocus name="email" id="email" required> <br> 
-                <input type="text" class="form-control" placeholder="nombre" name="nombre" onChange="conMin(this)" required id="nombre" title="Ingresa un nombre de usuario" required><br> 
+                <input type="text" class="form-control" placeholder="nombre" name="nombre" onChange="conMin(this)"  id="nombre" title="Ingresa un nombre de usuario" required><br> 
                 <input type="password" class="form-control" placeholder="Password" name="pass1" id="pass1" title="Contraseña requerida" required><br> 
                 <input type="password" class="form-control" placeholder="Repeat Password " name="pass2" id="pass1_repeat" title="Ingresa la misma contraseña" required oninput="check(this)"> <br>                                    
                  	<div class="modal-footer">
@@ -106,14 +106,8 @@ function check(input) {if (input.value != document.getElementById('pass1').value
 				<ul>
 					<li><a href="catalogo.php">Catálogo</a></li>
 					<li><a href="#">Clientes</a></li>
-<<<<<<< HEAD
-					<li><a href="sabermas.php">Saber Mas</a></li>
-=======
+
 					<li><a href="sabermas.php" target="_black">Saber Mas</a></li>
-<<<<<<< HEAD
->>>>>>> ef192c8ac68a40315b7e1d4c2c83c5fa95be2d28
-=======
->>>>>>> origin
 					<li><a href="http://about.me/luisalfredomoctezuma">Contacto</a></li>
 				</ul>
 				<ul>
