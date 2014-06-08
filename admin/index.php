@@ -6,14 +6,14 @@ include("../conexion.php");
 <!doctype html>
 <html lang="es">
 <head>
-	<meta charset="UTF-8">
-	<title>Admin</title>
+  <meta charset="UTF-8">
+  <title>Admin</title>
      <link rel="stylesheet" href="../css/bootstrap.css">
-	 <link rel="stylesheet" href="../css/bootstrap.min.css">
+   <link rel="stylesheet" href="../css/bootstrap.min.css">
          <link rel="stylesheet" href="../css/bootstrap-responsive.css">
          <link rel="stylesheet" href="../css/bootstrap-responsive.min.css">
    
-        <script src="../js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>	
+        <script src="../js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script> 
         <script src="../js/bootstrap.js"></script> 
         <script src="../js/jquery-1.8.3.min.js"></script> 
 
@@ -23,7 +23,7 @@ include("../conexion.php");
 }</style>
 </head>
 <body>
-	<br><br>
+  <br><br>
 <?php
 if ($_SESSION['nombre']=='administrador') {
  ?>
