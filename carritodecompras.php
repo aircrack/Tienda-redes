@@ -96,9 +96,9 @@
 <head>
 	<meta charset="utf-8"/>
 	<title>Carrito de Compras</title>
-	<link rel="stylesheet" type="text/css" href="./css/estilos.css">
+	<link rel="stylesheet" type="text/css" href="css/estilos.css">
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-	<script type="text/javascript"  src="./js/scripts.js"></script>
+	<script type="text/javascript"  src="js/scripts.js"></script>
 </head>
 <body>
 	
@@ -136,9 +136,9 @@
 			}
 			echo '<center><h2 id="total">Total: '.$total.'</h2></center>';
 			if($total!=0){
-					//echo '<center><a href="./compras/compras.php" class="aceptar">Comprar</a></center>';
+					//echo '<center><a href="./|compras/compras.php" class="aceptar">Comprar</a></center>';
 			?>
-				<form action="./compras/compras.php" method="post" id="formulario">
+				<form action="compras.php" method="post" id="formulario">
 					<input type="hidden" name="cmd" value="_cart">
 					<input type="hidden" name="upload" value="1">
 					<input type="hidden" name="business" value="tu_correo_paypal@gmail.com">

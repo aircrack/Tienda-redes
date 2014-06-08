@@ -16,6 +16,7 @@ include("../conexion.php");
         <script src="../js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script> 
         <script src="../js/bootstrap.js"></script> 
         <script src="../js/jquery-1.8.3.min.js"></script> 
+<script type="text/javascript" src="./js/modificar.js"></script>
 
         <style>
         body  {
@@ -75,7 +76,8 @@ if ($_SESSION['nombre']=='administrador') {
                 <li class="active"><a href="#lA" data-toggle="tab">Usuarios registrados</a></li>
                 <li><a href="#lB" data-toggle="tab">Productos mas vendidos</a></li>
                 <li><a href="#lC" data-toggle="tab">Productos menos vendidos</a></li>
-                 <li><a href="#lD" data-toggle="tab">Productos</a></li>
+                 <li><a href="#lD" data-toggle="tab">Modificar Productos</a></li>
+                  <li><a href="#lE" data-toggle="tab">Alta Productos</a></li>
               </ul>
               <div class="tab-content">
                 <div class="tab-pane active" id="lA">
@@ -117,7 +119,7 @@ if ($_SESSION['nombre']=='administrador') {
 
                              $con = mysql_connect($host,$user,$pw) or die("Problema al conectar");
                              mysql_select_db($db,$con) or die("Problema al conectar la BD");
-                            $result_set= mysql_query("select cantidad, subtotal,p.descripcion from renglon r join produtos p on r.produtos_id=p.id order by cantidad desc LIMIT 20",$con);
+                            $result_set= mysql_query("select r.cantidad, r.subtotal,p.descripcion from renglon r join productos p on r.productos_id=p.id order by cantidad desc LIMIT 20",$con);
 
                             print "<table class='table table-striped table-bordered table-hover table-condensed'>";
                             //Imprime las cabeceras
@@ -145,7 +147,7 @@ if ($_SESSION['nombre']=='administrador') {
 
                                  $con = mysql_connect($host,$user,$pw) or die("Problema al conectar");
                                  mysql_select_db($db,$con) or die("Problema al conectar la BD");
-                                $result_set= mysql_query("select cantidad, subtotal,p.descripcion from renglon r join produtos p on r.produtos_id=p.id order by cantidad asc LIMIT 20",$con);
+                                $result_set= mysql_query("select r.cantidad, r.subtotal,p.descripcion from renglon r join productos p on r.productos_id=p.id order by cantidad asc LIMIT 20",$con);
 
                                 print "<table class='table table-striped table-bordered table-hover table-condensed'>";
                                 //Imprime las cabeceras
@@ -167,71 +169,72 @@ if ($_SESSION['nombre']=='administrador') {
                               </div>
                 </div>
                   <div class="tab-pane" id="lD">
-   <?php
-$var="";
-$var1="";
-$var2="";
-$var3="";
-
-if(isset($_POST["btn"])){
-$btn=$_POST["btn"];
-$id=$_POST["id"];
-$nom=$_POST["descripcion"];
-$dir=$_POST["categoria"];
-$ed=$_POST["precio"];
-
-      if($btn=="Eliminar"){ 
-      $sql="delete from clientes where id='$id'";
-      
-      $cs=mysql_query($sql,$cn);
-      echo "<script> alert('Se elimino correctamente');</script>";
-      }
-
-    if($btn=="Agregar"){
-    $sql="insert into clientes values ('$id','$nom','$dir','$ed')";
-    
-    $cs=mysql_query($sql,$cn);
-    echo "<script> alert('Se insertó correctamente');</script>";
-    }
-      if($btn=="Buscar"){
-      $sql="select * from clientes where id='$id'";
-      $cs=mysql_query($sql,$cn);
-      while($resul=mysql_fetch_array($cs)){
-      $var=$resul[0];
-      $var1=$resul[1];
-      $var2=$resul[2];
-      $var3=$resul[3];
-      }
-      }
-    if($btn=="Actualizar"){
-    $sql="update clientes set descripcion='$nom',categoria='$dir',precio='$ed' where id='$id'";
-    $cs=mysql_query($sql,$cn);
-    echo "<script> alert('Se actualizo correctamente');</script>";
-    }
-
-            }
-?>
-<div class="span2"> <br>
-  <img src="../imagenes/admin1.jpg" alt="img de producto" class="img-rounded"> <br><br>
-  <input type="submit"   value="Elegir imagen" class="btn btn-success">
-</div>
-<div class="span7">
-   
-  <form action="" method="post" name="form" class="control-group">
-  <input type="text" name="id" value="<?php echo $var?>" placeholder="id"><br>
-    <input type="text" name="descripcion" value="<?php echo $var1?>" placeholder="descripcion" class="form-control"><br>
-    <input type="text" name="categoria" value="<?php echo $var2?>" placeholder="categoria" class="form-control"><br>
-    <input type="text" name="precio" value="<?php echo $var3?>" placeholder="precio" class="form-control"><br>
-    <input type="submit"  name="btn" value="Agregar" class="btn btn-success" class="form-control">
-    <input type="submit"  name="btn" value="Eliminar" class="btn btn-danger" class="form-control">
-    <input type="submit"  name="btn" value="Buscar" class="btn btn-success" class="form-control">
-    <input type="submit"  name="btn" value="Actualizar" class="btn btn-success" class="form-control">
-  </form>
- 
-</div>
-
+    <div class="span9">
+       <h1 class="text-info">MODIFICAR Y/O ELIMINAR</h1>
+            <table class="table table-striped table-bordered table-hover table-condensed">
+              <tr>
+                <th class="text-warning"><h4>Id</h4></th>
+                <th class="text-warning"><h4>Nombre</h4></th>
+                <th class="text-warning"><h4>Descripcion</h4></th>
+                <th class="text-warning"><h4>Precio</h4></th>
+                <th class="text-warning"><h4>Eliminar</h4></th>
+                <th class="text-warning"><h4>Modificar</h4></th>
+              </tr>
+            <?php 
+             $con = mysql_connect($host,$user,$pw) or die("Problema al conectar");
+          mysql_select_db($db,$con) or die("Problema al conectar la BD");
+              $resultado=mysql_query("select * from productos");
+              while($row=mysql_fetch_array($resultado)){
+                echo '
+                <tr class="error">
+                  <td>
+                    <input type="hidden" value="'.$row[0].'">'.$row[0].'
+                    <input type="hidden" class="imagen" value="'.$row[3].'">
+                  </td>
+                  <td><input type="text" class="nombre" value="'.$row[1].'"></td>
+                  <td><input type="text" class="descripcion" value="'.$row[2].'"></td>
+                  <td><input type="text" class="precio" value="'.$row[4].'"></td>
+                  <td><button class="eliminar btn btn-danger" data-id="'.$row[0].'">Eliminar</button></td>
+                  <td><button class="modificar btn btn-primary" data-id="'.$row[0].'">Modificar</button></td>
+                </tr>
+                ';
+              }
+            ?>
+          </table>
+    </div>
 
                   </div>  
+
+  <div class="tab-pane" id="lE">
+      <section>
+  
+
+  <center><h1>Agregar un Nuevo Producto</h1></center>
+  <form action="altaproducto.php" method ="post" enctype="multipart/form-data">
+    <fieldset>
+ <strong><h4 class="text-info">Nombre</h4></strong>
+      <input type="text" name="nombre">
+    </fieldset>
+    <fieldset>
+     <strong><h4 class="text-info">Descripción</h4></strong>
+      <input type="text" name="descripcion">
+    </fieldset>
+    <fieldset>
+      <h4 class="text-info">Imagen</h4>      
+      <input type="file"  class="btn btn-inverse" name="file">
+    </fieldset>
+    <fieldset>      
+        <h4 class="text-info">Precio</h4> 
+      <input type="text" name="precio">
+    </fieldset>
+    <input type="submit" name="accion" value="Enviar" class="aceptar btn btn-primary">
+  </form> 
+  
+    </form>
+  </section>
+  </div>
+
+
               </div>
             </div> <!-- /tabbable -->
           </div>
