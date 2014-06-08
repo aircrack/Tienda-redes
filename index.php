@@ -33,7 +33,9 @@ session_start();
 			</div>
 			<div class="modal-body" align="center">
 				 <form action="iniciarl.php" method="POST">
+  
                	 <input type="text" class="form-control" placeholder="nombre" name="nombre" autofocus onChange="conMin(this)" required><br><br>
+ 
                		 <input type="password" class="form-control" placeholder="password" name="password" required>  
 	               	<div class="modal-footer">
 					<a href="#" class="btn" data-dismiss="modal">Cerrar</a>
@@ -42,6 +44,7 @@ session_start();
     			</form>	
 			</div>
 		</div>
+  
 
 		<div id="registraruser" class="modal hide fade">
 			<div class="modal-header">
@@ -97,7 +100,7 @@ function check(input) {if (input.value != document.getElementById('pass1').value
 	}
 ?>
 	 <div id="principal">
-
+ 
 		<div class="container">
 					<div class="row">	<div class="span7"><h2>Gadgets y productos tecnológicos</h2></div>			 
 					</div>				
@@ -106,8 +109,8 @@ function check(input) {if (input.value != document.getElementById('pass1').value
 				<ul>
 					<li><a href="catalogo.php">Catálogo</a></li>
 					<li><a href="#">Clientes</a></li>
-
 					<li><a href="sabermas.php" target="_black">Saber Mas</a></li>
+ 
 					<li><a href="http://about.me/luisalfredomoctezuma">Contacto</a></li>
 				</ul>
 				<ul>

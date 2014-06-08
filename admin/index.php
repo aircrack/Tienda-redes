@@ -1,263 +1,142 @@
 <?php
 session_start();
-include("../conexion.php");
-
 ?>
-<!doctype html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Admin</title>
-     <link rel="stylesheet" href="../css/bootstrap.css">
-   <link rel="stylesheet" href="../css/bootstrap.min.css">
-         <link rel="stylesheet" href="../css/bootstrap-responsive.css">
-         <link rel="stylesheet" href="../css/bootstrap-responsive.min.css">
-   
-        <script src="../js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script> 
-        <script src="../js/bootstrap.js"></script> 
-        <script src="../js/jquery-1.8.3.min.js"></script> 
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>MarketPlace| Network</title>
+    <meta name="description" content="Responsive Animated Border Menus with CSS Transitions" />
+    <meta name="keywords" content="navigation, menu, responsive, border, overlay, css transition" />
+     
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="css/demo.css" />
+    <link rel="stylesheet" type="text/css" href="css/icons.css" />
+    <link rel="stylesheet" type="text/css" href="css/style5.css" />     
+    <script src="js/modernizr.custom.js"></script>
+     <link rel="stylesheet" href="css/bootstrap.css">
 
-        <style>
-        body  {
-  background: #1abc9c;
-}</style>
-</head>
-<body>
-  <br><br>
-<?php
-if ($_SESSION['nombre']=='administrador') {
- ?>
- <div class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <a class="brand"> <strong>Administración</strong></a>
-    <ul class="nav">
-    <li  class="active"><a href="../index.php">Inicio</a></li>
-      
-      <li>
+ 
+  <script src="js/jquery-1.8.3.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+<script> function conMin(field) { field.value = field.value.toLowerCase()}</script>
+
+  </head>
+  <body>
+    
+    <div id="iniciosession" class="modal hide fade">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+        <h3 class="text-info">Ingresa tus datos</h3>
+      </div>
+      <div class="modal-body" align="center">
+         <form action="iniciarl.php" method="POST">
+                 <input type="text" class="form-control" placeholder="nombre" name="nombre" autofocus onChange="conMin(this)" required><br><br>
+                   <input type="password" class="form-control" placeholder="password" name="password" required>  
+                  <div class="modal-footer">
+          <a href="#" class="btn" data-dismiss="modal">Cerrar</a>
+          <button id="yesbutton" type="submit" class="btn btn-primary" >Iniciar Session</button>
+          </div>
+          </form> 
+      </div>
+    </div>
+
+    <div id="registraruser" class="modal hide fade">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+        <h3 class="text-info">Ingresa tus datos</h3>
+      </div>
+      <div class="modal-body" align="center">       
+          <form action="nuevouser.php" method="POST" >
+      <input type="email" class="form-control" placeholder="Email address" autofocus name="email" id="email" required> <br> 
+                <input type="text" class="form-control" placeholder="nombre" name="nombre" onChange="conMin(this)"  id="nombre" title="Ingresa un nombre de usuario" required><br> 
+                <input type="password" class="form-control" placeholder="Password" name="pass1" id="pass1" title="Contraseña requerida" required><br> 
+                <input type="password" class="form-control" placeholder="Repeat Password " name="pass2" id="pass1_repeat" title="Ingresa la misma contraseña" required oninput="check(this)"> <br>                                    
+                  <div class="modal-footer">
+            <a href="#" class="btn" data-dismiss="modal">Cerrar</a>
+            <button class="btn btn-lg btn-primary" type="submit" >Registrarse</button>  
+          </div>
+           </form>
+      </div>
+    </div>
+
+<script>
+function check(input) {if (input.value != document.getElementById('pass1').value) {input.setCustomValidity('Los campos no coinciden');} else{ input.setCustomValidity(''); }} 
+</script>
     <?php
   if(isset($_POST['nombre'])){
     ?>
+
     <div class="codrops-header" align="center">
-  <h4><p><strong><?php echo $_POST['nombre']; ?></strong> &nbsp &nbsp &nbsp &nbsp <strong>¿No eres tu?  </strong><a href="../cerrar.php">Cerrar session</a> </p></h4>       
+  <h4><p>Bienvenid@! Has iniciado sesion como : <strong><?php echo $_POST['nombre']; ?></strong> &nbsp &nbsp &nbsp &nbsp <strong>¿No eres tu?  </strong><a href="cerrar.php">Cerrar session</a> </p></h4>       
     </div>
     <?php
   }else{
     if(isset($_SESSION['nombre'])){
       ?>
   <div class="codrops-header" align="center">
-  <h4><p> <strong> <?php echo $_SESSION['nombre']; ?></strong>   &nbsp &nbsp &nbsp &nbsp <strong>  </strong><a href="../cerrar.php">Cerrar session</a> </p></h4>     
+  <h4><p>Bienvenid@! Has iniciado sesion como : <strong> <?php 
+  if ($_SESSION['nombre']== "administrador" ) {
+    ?> <a href="admin/index.php"><?php echo $_SESSION['nombre']; ?></a> <?php
+  }
+  else {  echo $_SESSION['nombre']; }
+  ?>
+  </strong>  &nbsp &nbsp &nbsp &nbsp <strong>¿No eres tu?  </strong><a href="cerrar.php">Cerrar session</a> </p></h4>     
     </div>
       <?
     }else{
     ?>
   <div class="codrops-header">
-    <h4><p><a href="../index.php#registraruser">Registrarme</a> para poder comprar &nbsp &nbsp &nbsp &nbsp  Si ya tienes cuenta <a href="../index.php#iniciosession">Inicia session</a></P></h4>     
+    <h4><p><a href="#registraruser" role="button" data-toggle="modal">Registrarme</a>  para poder comprar &nbsp &nbsp &nbsp &nbsp  Si ya tienes cuenta  <a href="#iniciosession" role="button" class="btn btn-primary" data-toggle="modal">Iniciar Session</a></P></h4> 
+
     </div>
     <?php
     }
   }
-?></li>
-    </ul>
-  </div>
-</div>
-<br><br>
+?>
+   <div id="principal">
 
+    <div class="container">
+          <div class="row"> <div class="span7"><h2>Gadgets y productos tecnológicos</h2></div>       
+          </div>        
+      <nav id="bt-menu" class="bt-menu">
+        <a href="#" class="bt-menu-trigger"><span>Menu</span></a>
+        <ul>
+          <li><a href="catalogo.php">Catálogo</a></li>
+          <li><a href="#">Clientes</a></li>
 
-<div class="container">
+          <li><a href="sabermas.php" target="_black">Saber Mas</a></li>
+          <li><a href="http://about.me/luisalfredomoctezuma">Contacto</a></li>
+        </ul>
+        <ul>
+          <li><a href="https://twitter.com/LuisAlfredoMoc" class="bt-icon icon-twitter" target="_black">Twitter</a></li>
+          <li><a href="https://plus.google.com/+LuisAlfredoMoctezumaPascual" class="bt-icon icon-gplus" target="_black">Google+</a></li>
+          <li><a href="https://www.facebook.com/luisalfredomoctezuma" class="bt-icon icon-facebook" target="_black">Facebook</a></li>
+          <li><a href="https://github.com/luisalfredomoctezuma" class="bt-icon icon-github" target="_black">icon-github</a></li>
+        </ul>
+      </nav>
+    </div> </div> 
 
-
-<div class="row">
-  <div class="span12">
- 
-          <div class="bs-docs-example">
-            <div class="tabbable tabs-left">
-              <ul class="nav nav-tabs">
-                <li class="active"><a href="#lA" data-toggle="tab">Usuarios registrados</a></li>
-                <li><a href="#lB" data-toggle="tab">Productos mas vendidos</a></li>
-                <li><a href="#lC" data-toggle="tab">Productos menos vendidos</a></li>
-                 <li><a href="#lD" data-toggle="tab">Productos</a></li>
-              </ul>
-              <div class="tab-content">
-                <div class="tab-pane active" id="lA">
-                                      <div class="span9">
-                <h3 class='text-info' align="center" id="registrados">Lista de usuarios registrados</h3>
-                   <?php
-
-                   $con = mysql_connect($host,$user,$pw) or die("Problema al conectar");
-                   mysql_select_db($db,$con) or die("Problema al conectar la BD");
-                  $result_set= mysql_query("Select nombre,email from usuarios;",$con);
-
-                  print "<table class='table table-striped table-bordered table-hover table-condensed'>";
-                  //Imprime las cabeceras
-                  for ($c=0; $c<mysql_num_fields($result_set); $c++) {
-                       print "<th class='text-warning'> <h4>". mysql_field_name($result_set, $c)." </h4></th>";
-                     }   
-                      print "<th class='text-warning'> <h4>Permisos</h4></th>";
-                   
-                  //Imprime todas las filas
-                  while ($record=mysql_fetch_row($result_set)) {
-                    print "<tr class='error'>";
-                    for ($c=0; $c<mysql_num_fields($result_set); $c++) {
-                       print "<td class='text-info'> <h4>". $record[$c]."</h4></td>" ;         
-                   }
-                   print "<td> <button type='button' class='btn btn-inverse btn-mini' href='#elimina' data-toggle='modal'>Eliminar</button></td>";
-                    print "</tr>";
-                   }
-                   print "</table>";
-
-                  ?>
-
-                </div>
-                </div>
-                <div class="tab-pane" id="lB">
-                  
-                                          <div class="span9">
-                          <h3 class='text-info' align="center" id="mas">Los productos mas vendidos  :D </h3>
-                             <?php
-
-                             $con = mysql_connect($host,$user,$pw) or die("Problema al conectar");
-                             mysql_select_db($db,$con) or die("Problema al conectar la BD");
-                            $result_set= mysql_query("select cantidad, subtotal,p.descripcion from renglon r join produtos p on r.produtos_id=p.id order by cantidad desc LIMIT 20",$con);
-
-                            print "<table class='table table-striped table-bordered table-hover table-condensed'>";
-                            //Imprime las cabeceras
-                            for ($c=0; $c<mysql_num_fields($result_set); $c++) {
-                                 print "<th class='text-warning'> <h4>". mysql_field_name($result_set, $c)." </h4></th>";
-                               }   
-                             
-                            //Imprime todas las filas
-                            while ($record=mysql_fetch_row($result_set)) {
-                              print "<tr class='error'>";
-                              for ($c=0; $c<mysql_num_fields($result_set); $c++) {
-                                 print "<td class='text-info'> <h4>". $record[$c]  ."</h4></td>" ;
-                             }
-                              print "</tr>";
-                             }
-                             print "</table>";
-                            ?>
-
-                          </div>
-                </div>
-                <div class="tab-pane" id="lC">
-                                              <div class="span9">
-                              <h3 class='text-info' align="center" id="menos">Productos no tan vendidos</h3>
-                                 <?php
-
-                                 $con = mysql_connect($host,$user,$pw) or die("Problema al conectar");
-                                 mysql_select_db($db,$con) or die("Problema al conectar la BD");
-                                $result_set= mysql_query("select cantidad, subtotal,p.descripcion from renglon r join produtos p on r.produtos_id=p.id order by cantidad asc LIMIT 20",$con);
-
-                                print "<table class='table table-striped table-bordered table-hover table-condensed'>";
-                                //Imprime las cabeceras
-                                for ($c=0; $c<mysql_num_fields($result_set); $c++) {
-                                     print "<th class='text-warning'> <h4>". mysql_field_name($result_set, $c)." </h4></th>";
-                                   }   
-                                 
-                                //Imprime todas las filas
-                                while ($record=mysql_fetch_row($result_set)) {
-                                  print "<tr class='error'>";
-                                  for ($c=0; $c<mysql_num_fields($result_set); $c++) {
-                                     print "<td class='text-info'> <h4>". $record[$c]  ."</h4></td>" ;
-                                 }
-                                  print "</tr>";
-                                 }
-                                 print "</table>";
-                                ?>
-
-                              </div>
-                </div>
-                  <div class="tab-pane" id="lD">
-   <?php
-$var="";
-$var1="";
-$var2="";
-$var3="";
-
-if(isset($_POST["btn"])){
-$btn=$_POST["btn"];
-$id=$_POST["id"];
-$nom=$_POST["descripcion"];
-$dir=$_POST["categoria"];
-$ed=$_POST["precio"];
-
-      if($btn=="Eliminar"){ 
-      $sql="delete from clientes where id='$id'";
+    <div class="container"> 
+    <div class="row">
+      <h3>Somos la mejor opción para comprar gadgets del momento y tecnologias que ya tienen mucho tiempo en el mercado</h3>
       
-      $cs=mysql_query($sql,$cn);
-      echo "<script> alert('Se elimino correctamente');</script>";
-      }
-
-    if($btn=="Agregar"){
-    $sql="insert into clientes values ('$id','$nom','$dir','$ed')";
-    
-    $cs=mysql_query($sql,$cn);
-    echo "<script> alert('Se insertó correctamente');</script>";
-    }
-      if($btn=="Buscar"){
-      $sql="select * from clientes where id='$id'";
-      $cs=mysql_query($sql,$cn);
-      while($resul=mysql_fetch_array($cs)){
-      $var=$resul[0];
-      $var1=$resul[1];
-      $var2=$resul[2];
-      $var3=$resul[3];
-      }
-      }
-    if($btn=="Actualizar"){
-    $sql="update clientes set descripcion='$nom',categoria='$dir',precio='$ed' where id='$id'";
-    $cs=mysql_query($sql,$cn);
-    echo "<script> alert('Se actualizo correctamente');</script>";
-    }
-
-            }
-?>
-<div class="span2"> <br>
-  <img src="../imagenes/admin1.jpg" alt="img de producto" class="img-rounded"> <br><br>
-  <input type="submit"   value="Elegir imagen" class="btn btn-success">
+<div class="span4">
+  
+        <p>Si no tienes tarjeta de credito, puedes pagar a travez de </p> 
+        <img src="imagenes/compropago.jpg" alt="">
 </div>
-<div class="span7">
-   
-  <form action="" method="post" name="form" class="control-group">
-  <input type="text" name="id" value="<?php echo $var?>" placeholder="id"><br>
-    <input type="text" name="descripcion" value="<?php echo $var1?>" placeholder="descripcion" class="form-control"><br>
-    <input type="text" name="categoria" value="<?php echo $var2?>" placeholder="categoria" class="form-control"><br>
-    <input type="text" name="precio" value="<?php echo $var3?>" placeholder="precio" class="form-control"><br>
-    <input type="submit"  name="btn" value="Agregar" class="btn btn-success" class="form-control">
-    <input type="submit"  name="btn" value="Eliminar" class="btn btn-danger" class="form-control">
-    <input type="submit"  name="btn" value="Buscar" class="btn btn-success" class="form-control">
-    <input type="submit"  name="btn" value="Actualizar" class="btn btn-success" class="form-control">
-  </form>
- 
+<div class="span4">
+  
+        <p>Si tienes tarjeta de credito, puedes pagar a travez de </p> 
+        <img src="imagenes/paypal-logo.png" alt="">
 </div>
+    </div>
+      </div>
 
-
-                  </div>  
-              </div>
-            </div> <!-- /tabbable -->
-          </div>
-   <br> 
-        </div>
- 
-</div>  
-</div>
-
-
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
-
-        <script src="../js/vendor/bootstrap.min.js"></script>
-        <script src="../js/main.js"></script>
-<?php
-}
-else
-{
-?>
-<script language='javascript'> alert('No tienes permisos para estar aqui :('); 
-  document.location=('../index.php');</script> 
-  <?php     
-}
- ?>  <br><br><br><br> <br>
- <div id="pie">
+<div id="pie">
   <div class="container"> 
   <div class="row-fluid">
      <div class="span12">     
@@ -280,5 +159,8 @@ else
 </div>
 
 
-</body>
+
+  </body>
+  <script src="js/classie.js"></script>
+  <script src="js/borderMenu.js"></script>
 </html>

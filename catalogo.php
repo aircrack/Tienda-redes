@@ -11,6 +11,13 @@ session_start();
         <link rel="stylesheet" href="css/main.css">
         <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 
+
+<link rel="stylesheet" type="text/css" href="./css/estilos.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript"  href="./js/scripts.js"></script>
+
+
+
 </head>
 
 <body>
@@ -103,65 +110,53 @@ session_start();
 
 <script>
 
-    $(function (){
+   /* $(function (){
         $('.carousel').carousel({
             interval:1000
         });
-    });
+    });*/
     
 </script>
-           <div class="row-fluid cajaproducto">
-                <div class="span4">
-                    <div class="boxsombra">
-                        <h3>ROUTER1</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam, enim aspernatur tempore voluptatem natus neque quasi molestiae. Porro, cupiditate, fuga odit esse deleniti ullam tenetur necessitatibus ut ratione laborum
-                         <a class="btn btn-warning btn-large" href="#">Comprar Ahora</a>
-                        </p>
-                    </div>
-                </div>
-                <div class="span4">
-                    <div class="boxsombra">
-                    <h3>ROUTER2</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, deserunt voluptate vitae mollitia aliquam non dolor cumque commodi nostrum blanditiis architecto corrupti quidem omnis tenetur odio at voluptatibus aspernatur rem.</p>
-                      <a class="btn btn-warning btn-large" href="#">Comprar Ahora</a>
-                    </div>
-                </div>
-                <div class="span4">
-                    <div class="boxsombra">
-                    <h3>ROUTER3</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, deserunt voluptate vitae mollitia aliquam non dolor cumque commodi nostrum blanditiis architecto corrupti quidem omnis tenetur odio at voluptatibus aspernatur rem.</p>
-                  <a class="btn btn-warning btn-large" href="#">Comprar Ahora</a>
-                    </div>
-                </div>
-            </div>
-
-               <div class="row-fluid cajaproducto">
-                <div class="span4">
-                    <div class="boxsombra">
-                        <h3>ROUTER1</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam, enim aspernatur tempore voluptatem natus neque quasi molestiae. Porro, cupiditate, fuga odit esse deleniti ullam tenetur necessitatibus ut ratione laborum accusamus!                         
-                        </p>
-                        <a class="btn btn-warning btn-large" href="#">Comprar Ahora</a>
-                    </div>
-                </div>
-                <div class="span4">
-                    <div class="boxsombra">
-                    <h3>ROUTER2</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, deserunt voluptate vitae mollitia aliquam non dolor cumque commodi nostrum blanditiis architecto corrupti quidem omnis tenetur odio at voluptatibus aspernatur rem.</p>
-                      <a class="btn btn-warning btn-large" href="#">Comprar Ahora</a>
-                    </div>
-                </div>
-                <div class="span4">
-                    <div class="boxsombra">
-                    <h3>ROUTER3</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, deserunt voluptate vitae mollitia aliquam non dolor cumque commodi nostrum blanditiis architecto corrupti quidem omnis tenetur odio at voluptatibus aspernatur rem.</p>
-                  <a class="btn btn-warning btn-large" href="#">Comprar Ahora</a>
-                    </div>
-                </div>
-            </div>
-
+ 
+        
 
 </div>
+
+<div>
+    
+
+  <section>
+        
+    <?php
+    include 'conexion.php';
+  $con = mysql_connect($host,$user,$pw) or die("Problema al conectar");
+  mysql_select_db($db,$con) or die("Problema al conectar la BD");
+        
+        $re=mysql_query("select * from productos;")or die(mysql_error());
+        while ($f=mysql_fetch_array($re)) {
+        ?>
+            <div class="producto">
+            <center>
+                <img src="./productos/<?php echo $f['imagen'];?>"><br>
+                <span><?php echo $f['descripcion'];?></span><br><br>
+
+                <a href="./detalles.php?id=<?php  echo $f['id'];?>">ver</a>
+            </center>
+        </div>
+    <?php
+        }
+    ?>
+        
+        
+
+        
+    </section>
+ 
+ 
+</div>
+
+  
+
 
 
 
