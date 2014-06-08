@@ -1,2 +1,7 @@
 conexion.php
 documentacion.md
+imagenes/*.jpg
+imagenes/*.png
+productos/*.*
+productos/*.jpg
+productos/*.png
