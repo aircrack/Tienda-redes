@@ -1,19 +1,5 @@
 <?php
-
 session_start();
-session_destroy();
-include("conexion.php");
-
-if(isset($_POST['nombre']) && !empty($_POST['nombre']) && 
-	isset($_POST['email']) && !empty($_POST['email']) &&
-	isset($_POST['pass1']) && !empty($_POST['pass1']))
-{
-  $con = mysql_connect($host,$user,$pw) or die("Problema al conectar");
-
-  mysql_select_db($db,$con) or die("Problema al conectar la BD");
-// insercion de datos
-  mysql_query("INSERT INTO usuarios (nombre,contrasena,email) VALUES (' $_POST[nombre] ','$_POST[pass1] ','$_POST[email] ') " , $con);
-}
 ?>
 <!DOCTYPE html>
 <html lang="es" class="no-js">
@@ -24,29 +10,107 @@ if(isset($_POST['nombre']) && !empty($_POST['nombre']) &&
 		<title>MarketPlace| Network</title>
 		<meta name="description" content="Responsive Animated Border Menus with CSS Transitions" />
 		<meta name="keywords" content="navigation, menu, responsive, border, overlay, css transition" />
-		<link rel="shortcut icon" href="../favicon.ico">
+		 
 		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
 		<link rel="stylesheet" type="text/css" href="css/demo.css" />
 		<link rel="stylesheet" type="text/css" href="css/icons.css" />
-		<link rel="stylesheet" type="text/css" href="css/style5.css" />
+		<link rel="stylesheet" type="text/css" href="css/style5.css" />		 	
 		<script src="js/modernizr.custom.js"></script>
+		 <link rel="stylesheet" href="css/bootstrap.css">
+
+ 
+  <script src="js/jquery-1.8.3.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+<script> function conMin(field) { field.value = field.value.toLowerCase()}</script>
+
 	</head>
 	<body>
+		
+		<div id="iniciosession" class="modal hide fade">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+				<h3 class="text-info">Ingresa tus datos</h3>
+			</div>
+			<div class="modal-body" align="center">
+				 <form action="iniciarl.php" method="POST">
+               	 <input type="text" class="form-control" placeholder="nombre" name="nombre" onChange="conMin(this)" required><br><br>
+               		 <input type="password" class="form-control" placeholder="password" name="password" required>  
+	               	<div class="modal-footer">
+					<a href="#" class="btn" data-dismiss="modal">Cerrar</a>
+					<button id="yesbutton" type="submit" class="btn btn-primary" >Iniciar Session</button>
+					</div>
+    			</form>	
+			</div>
+		</div>
+
+		<div id="registraruser" class="modal hide fade">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+				<h3 class="text-info">Ingresa tus datos</h3>
+			</div>
+			<div class="modal-body" align="center">				
+    			<form action="nuevouser.php" method="POST" >
+			<input type="email" class="form-control" placeholder="Email address" autofocus name="email" id="email" required> <br> 
+                <input type="text" class="form-control" placeholder="nombre" name="nombre" onChange="conMin(this)" required id="nombre" title="Ingresa un nombre de usuario" required><br> 
+                <input type="password" class="form-control" placeholder="Password" name="pass1" id="pass1" title="Contraseña requerida" required><br> 
+                <input type="password" class="form-control" placeholder="Repeat Password " name="pass2" id="pass1_repeat" title="Ingresa la misma contraseña" required oninput="check(this)"> <br>                                    
+                 	<div class="modal-footer">
+						<a href="#" class="btn" data-dismiss="modal">Cerrar</a>
+						<button class="btn btn-lg btn-primary" type="submit" >Registrarse</button>  
+					</div>
+   				 </form>
+			</div>
+		</div>
+
+<script>
+function check(input) {if (input.value != document.getElementById('pass1').value) {input.setCustomValidity('Los campos no coinciden');} else{ input.setCustomValidity(''); }} 
+</script>
+		<?php
+	if(isset($_POST['nombre'])){
+		?>
+
+		<div class="codrops-header" align="center">
+	<h4><p>Bienvenid@! Has iniciado sesion como : <strong><?php print($_POST['nombre']); ?></strong> &nbsp &nbsp &nbsp &nbsp <strong>¿No eres tu?  </strong><a href="cerrar.php">Cerrar session</a> </p></h4>				
+		</div>
+		<?php
+	}else{
+		if(isset($_SESSION['nombre'])){
+			?>
+	<div class="codrops-header" align="center">
+	<h4><p>Bienvenid@! Has iniciado sesion como : <strong> <?php 
+	if ($_SESSION['nombre']== "administrador" ) {
+		?> <a href="admin/index.php"><?php echo $_SESSION['nombre']." ".$_SESSION['idusuario']; ?></a> <?php
+	}
+	else {  echo $_SESSION['nombre']." ".$_SESSION['idusuario']; }
+	?>
+	</strong>	 &nbsp &nbsp &nbsp &nbsp <strong>¿No eres tu?  </strong><a href="cerrar.php">Cerrar session</a> </p></h4>			
+		</div>
+			<?
+		}else{
+		?>
+	<div class="codrops-header">
+		<h4><p><a href="#registraruser" role="button" data-toggle="modal">Registrarme</a>  para poder comprar &nbsp &nbsp &nbsp &nbsp  Si ya tienes cuenta  <a href="#iniciosession" role="button" class="btn btn-primary" data-toggle="modal">Iniciar Session</a></P></h4>	
+
+		</div>
+		<?php
+		}
+	}
+?>
+	 <div id="principal">
+
 		<div class="container">
-			<header class="codrops-header">
- 
-
-				<h1>Gadgets y productos tecnológicos   </h1>
-													
-			</header>
-
+					<div class="row">	<div class="span7"><h2>Gadgets y productos tecnológicos</h2></div>			 
+					</div>				
 			<nav id="bt-menu" class="bt-menu">
 				<a href="#" class="bt-menu-trigger"><span>Menu</span></a>
 				<ul>
 					<li><a href="catalogo.php">Catálogo</a></li>
 					<li><a href="#">Clientes</a></li>
+					<li><a href="sabermas.php">Saber Mas</a></li>
+
 					<li><a href="sabermas.php" target="_black">Saber Mas</a></li>
-					<li><a href="#">Contacto</a></li>
+
+					<li><a href="http://about.me/luisalfredomoctezuma">Contacto</a></li>
 				</ul>
 				<ul>
 					<li><a href="https://twitter.com/LuisAlfredoMoc" class="bt-icon icon-twitter" target="_black">Twitter</a></li>
@@ -55,38 +119,49 @@ if(isset($_POST['nombre']) && !empty($_POST['nombre']) &&
 					<li><a href="https://github.com/luisalfredomoctezuma" class="bt-icon icon-github" target="_black">icon-github</a></li>
 				</ul>
 			</nav>
+		</div> </div> 
 
-<?php
-	if(isset($_POST['nombre'])){
-		$_SESSION['nombre'] = $_POST['nombre'];
-		?>
-		<div class="codrops-header" align="center">
-		<p>Bienvenido! Has iniciado sesion: <?php echo $_POST['nombre']; ?> </p>
-			<a href="index.php">¿No eres tu? Cerrar session</a>
-			<br>			
+		<div class="container">	
+		<div class="row">
+			<h3>Somos la mejor opción para comprar gadgets del momento y tecnologias que ya tienen mucho tiempo en el mercado</h3>
+			
+<div class="span4">
+	
+				<p>Si no tienes tarjeta de credito, puedes pagar a travez de </p> 
+				<img src="imagenes/compropago.jpg" alt="">
+</div>
+<div class="span4">
+	
+				<p>Si tienes tarjeta de credito, puedes pagar a travez de </p> 
+				<img src="imagenes/paypal-logo.png" alt="">
+</div>
 		</div>
+			</div>
 
-		<?php
-	}else{
-		if(isset($_SESSION['nombre'])){
-			echo "Has iniciado Sesion: ".$_SESSION['nombre'];
-			echo "<p><a href='index.php'>¿No eres tu? Cerrar Sesion</a></p>";
-
-		}else{
-		?>
-		<div class="codrops-header" align="center">
-		<p>Registrate para poder comprar
-			<a href="registro.php">Registrarse</a>	</p>
-			<P>Si ya tienes cuenta <a href="iniciar.php">Inicia session</a></P>		
+<div id="pie">
+	<div class="container">	
+	<div class="row-fluid">
+		 <div class="span12">			
+			<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licencia Creative Commons" style="border-width:0" src="http://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Gadgets-Redes</span> por <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/luisalfredomoctezuma/Tienda-redes/graphs/contributors" property="cc:attributionName" rel="cc:attributionURL">Luis Alfredo-Gerson-Luis Antonio-Joaquin</a> se distribuye bajo una <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Licencia Creative Commons Atribución 4.0 Internacional</a>.    
+			        <p>&copy; 2013 LAMoctezuma, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>			  			
 		</div>
-		<?php
-		}
-	}
-?>
+	</div>
+	<div class="row-fluid">
+		<div class="span6">	
+		<h5><a href="">Blog</a></h5>
+		<h5><a href="">Documentacion</a></h5>
+		<h5><a href="">Terminos y condiciones</a></h5>
+		</div>
+		<div class="span6">	
+		<h5>Puedes descargar y contribuir con el proyecto<a href="https://github.com/luisalfredomoctezuma/Tienda-redes">Github</a> </h5>
+		<h5>Mira el proyecto en produccion en <a href="http://tienda-redes.herokuapp.com/">Heroku</a></h5>
+		</div>
+	</div>
+	</div>
+</div>
 
 
 
-		</div> 
 	</body>
 	<script src="js/classie.js"></script>
 	<script src="js/borderMenu.js"></script>
