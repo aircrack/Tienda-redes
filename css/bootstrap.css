@@ -7,7 +7,7 @@
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
-
+#pie {background-color: #000000; color: #FFFFFF; margin-top: 50px; border-top: 1px solid #800000; font-size: 13px;}
 .clearfix {
   *zoom: 1;
 }
